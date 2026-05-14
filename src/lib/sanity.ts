@@ -16,7 +16,7 @@ export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
-export const STUDIO_URL = "https://sibol-wonders.sanity.studio/";
+export const STUDIO_URL = "https://sibolwonders.sanity.studio/";
 
 export type Story = {
   _id: string;
