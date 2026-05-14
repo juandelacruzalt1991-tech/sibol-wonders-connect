@@ -48,3 +48,13 @@ export type ResourceDoc = {
   location?: string;
   website?: string;
 };
+
+export type HomePageDoc = {
+  _id: string;
+  heroMedia?: {
+    mediaType?: "image" | "slideshow" | "video";
+    singleImage?: SanityImageSource;
+    slideshow?: SanityImageSource[];
+    videoUrl?: string;
+  };
+};
