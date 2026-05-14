@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, Calendar, HeartHandshake, MapPin, Sparkles } from
 import heroImg from "@/assets/hero-families.jpg";
 import { sanityClient, type Story, type EventDoc, type ResourceDoc } from "@/lib/sanity";
 import { StoryCard } from "@/components/StoryCard";
+import { eventFallback, resourceFallback } from "@/lib/fallbacks";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -146,18 +147,23 @@ function Home() {
         />
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {events?.map((e) => (
-            <div key={e._id} className="card-soft p-6">
-              <div className="flex items-center gap-2 text-primary text-sm font-semibold">
-                <Calendar className="w-4 h-4" />
-                {e.date && new Date(e.date).toLocaleDateString(undefined, { dateStyle: "long" })}
+            <div key={e._id} className="card-soft overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden bg-gradient-warm">
+                <img src={eventFallback(e._id)} alt={e.name} loading="lazy" width={800} height={600} className="w-full h-full object-cover" />
               </div>
-              <h3 className="mt-3 font-display font-bold text-xl">{e.name}</h3>
-              {e.location && (
-                <p className="mt-2 text-sm text-muted-foreground inline-flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4" /> {e.location}
-                </p>
-              )}
-              {e.description && <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{e.description}</p>}
+              <div className="p-6">
+                <div className="flex items-center gap-2 text-primary text-sm font-semibold">
+                  <Calendar className="w-4 h-4" />
+                  {e.date && new Date(e.date).toLocaleDateString(undefined, { dateStyle: "long" })}
+                </div>
+                <h3 className="mt-3 font-display font-bold text-xl">{e.name}</h3>
+                {e.location && (
+                  <p className="mt-2 text-sm text-muted-foreground inline-flex items-center gap-1.5">
+                    <MapPin className="w-4 h-4" /> {e.location}
+                  </p>
+                )}
+                {e.description && <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{e.description}</p>}
+              </div>
             </div>
           ))}
           {!events && <SkeletonRow />}
@@ -174,17 +180,22 @@ function Home() {
         />
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {resources?.map((r) => (
-            <div key={r._id} className="card-soft p-6">
-              <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold capitalize">
-                {r.category}
-              </span>
-              <h3 className="mt-3 font-display font-bold text-xl">{r.name}</h3>
-              {r.location && (
-                <p className="mt-2 text-sm text-muted-foreground inline-flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4" /> {r.location}
-                </p>
-              )}
-              {r.description && <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{r.description}</p>}
+            <div key={r._id} className="card-soft overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden bg-gradient-warm">
+                <img src={resourceFallback(r.category)} alt={r.name} loading="lazy" width={800} height={600} className="w-full h-full object-cover" />
+              </div>
+              <div className="p-6">
+                <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold capitalize">
+                  {r.category}
+                </span>
+                <h3 className="mt-3 font-display font-bold text-xl">{r.name}</h3>
+                {r.location && (
+                  <p className="mt-2 text-sm text-muted-foreground inline-flex items-center gap-1.5">
+                    <MapPin className="w-4 h-4" /> {r.location}
+                  </p>
+                )}
+                {r.description && <p className="mt-3 text-sm text-muted-foreground line-clamp-3">{r.description}</p>}
+              </div>
             </div>
           ))}
           {!resources && <SkeletonRow />}
