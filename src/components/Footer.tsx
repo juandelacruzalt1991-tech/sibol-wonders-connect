@@ -1,7 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Heart, Facebook, Instagram, Mail } from "lucide-react";
+import { Heart, Facebook, Instagram, Youtube, Mail } from "lucide-react";
 import { STUDIO_URL } from "@/lib/sanity";
 
+const TiktokIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 export function Footer() {
   return (
     <footer className="mt-24 border-t border-border/60 bg-secondary/40">
@@ -34,7 +39,7 @@ export function Footer() {
 
         <div>
           <p className="text-sm font-semibold">Stay close to us</p>
-          <div className="mt-3 flex items-center gap-2">
+          <div className="mt-3 flex flex-wrap items-center gap-2">
             <a
               href="https://www.facebook.com/TheSibolProjectPh"
               target="_blank"
@@ -45,11 +50,31 @@ export function Footer() {
               <Facebook className="w-4 h-4" />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/thesibolprojectph"
+              target="_blank"
+              rel="noreferrer"
               aria-label="Instagram"
               className="w-10 h-10 grid place-items-center rounded-full bg-card border border-border hover:bg-accent"
             >
               <Instagram className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.youtube.com/@TheSibolProjectPh"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+              className="w-10 h-10 grid place-items-center rounded-full bg-card border border-border hover:bg-accent"
+            >
+              <Youtube className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.tiktok.com/@thesibolprojectph"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="TikTok"
+              className="w-10 h-10 grid place-items-center rounded-full bg-card border border-border hover:bg-accent"
+            >
+              <TiktokIcon className="w-4 h-4" />
             </a>
             <a
               href="mailto:hello@sibolwonders.org"

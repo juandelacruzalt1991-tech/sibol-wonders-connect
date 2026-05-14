@@ -1,7 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
-import { Mail, Facebook, Instagram, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Facebook, Instagram, Youtube, Send, CheckCircle2 } from "lucide-react";
+
+const TiktokIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -58,12 +64,18 @@ function ContactPage() {
           </a>
         </div>
 
-        <div className="mt-6 flex items-center gap-2">
+        <div className="mt-6 flex flex-wrap items-center gap-2">
           <a href="https://www.facebook.com/TheSibolProjectPh" target="_blank" rel="noreferrer" aria-label="Facebook" className="w-11 h-11 grid place-items-center rounded-full bg-card border border-border hover:bg-secondary">
             <Facebook className="w-4 h-4" />
           </a>
-          <a href="https://instagram.com" aria-label="Instagram" className="w-11 h-11 grid place-items-center rounded-full bg-card border border-border hover:bg-secondary">
+          <a href="https://www.instagram.com/thesibolprojectph" target="_blank" rel="noreferrer" aria-label="Instagram" className="w-11 h-11 grid place-items-center rounded-full bg-card border border-border hover:bg-secondary">
             <Instagram className="w-4 h-4" />
+          </a>
+          <a href="https://www.youtube.com/@TheSibolProjectPh" target="_blank" rel="noreferrer" aria-label="YouTube" className="w-11 h-11 grid place-items-center rounded-full bg-card border border-border hover:bg-secondary">
+            <Youtube className="w-4 h-4" />
+          </a>
+          <a href="https://www.tiktok.com/@thesibolprojectph" target="_blank" rel="noreferrer" aria-label="TikTok" className="w-11 h-11 grid place-items-center rounded-full bg-card border border-border hover:bg-secondary">
+            <TiktokIcon className="w-4 h-4" />
           </a>
         </div>
       </div>
