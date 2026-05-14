@@ -59,7 +59,7 @@ function ContactPage() {
         </div>
 
         <div className="mt-6 flex items-center gap-2">
-          <a href="https://facebook.com" aria-label="Facebook" className="w-11 h-11 grid place-items-center rounded-full bg-card border border-border hover:bg-secondary">
+          <a href="https://www.facebook.com/TheSibolProjectPh" target="_blank" rel="noreferrer" aria-label="Facebook" className="w-11 h-11 grid place-items-center rounded-full bg-card border border-border hover:bg-secondary">
             <Facebook className="w-4 h-4" />
           </a>
           <a href="https://instagram.com" aria-label="Instagram" className="w-11 h-11 grid place-items-center rounded-full bg-card border border-border hover:bg-secondary">

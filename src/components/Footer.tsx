@@ -36,7 +36,9 @@ export function Footer() {
           <p className="text-sm font-semibold">Stay close to us</p>
           <div className="mt-3 flex items-center gap-2">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/TheSibolProjectPh"
+              target="_blank"
+              rel="noreferrer"
               aria-label="Facebook"
               className="w-10 h-10 grid place-items-center rounded-full bg-card border border-border hover:bg-accent"
             >
