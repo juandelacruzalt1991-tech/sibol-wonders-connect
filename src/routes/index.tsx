@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, BookOpen, Calendar, HeartHandshake, MapPin, Sparkles } from "lucide-react";
-import heroImg from "@/assets/hero-families.jpg";
-import { sanityClient, type Story, type EventDoc, type ResourceDoc, type HomePageDoc } from "@/lib/sanity";
+import { sanityClient, type Story, type EventDoc, type ResourceDoc } from "@/lib/sanity";
 import { StoryCard } from "@/components/StoryCard";
 import { HeroMedia } from "@/components/HeroMedia";
 import { eventFallback, resourceFallback } from "@/lib/fallbacks";
@@ -18,21 +17,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { data: homePage } = useQuery<HomePageDoc>({
-    queryKey: ["homePage"],
-    queryFn: () =>
-      sanityClient.fetch(
-        `*[_type == "homePage"][0]{
-          _id,
-          heroMedia {
-            mediaType,
-            singleImage,
-            slideshow,
-            "videoUrl": videoUrl.asset->url
-          }
-        }`
-      ),
-  });
 
   const { data: stories } = useQuery<Story[]>({
     queryKey: ["stories", "preview"],
@@ -84,7 +68,7 @@ function Home() {
           <div className="fade-up">
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-warm rounded-[2.5rem] opacity-60 blur-2xl" aria-hidden />
-              <HeroMedia media={homePage?.heroMedia} fallbackImg={heroImg} />
+              <HeroMedia />
             </div>
           </div>
         </div>
