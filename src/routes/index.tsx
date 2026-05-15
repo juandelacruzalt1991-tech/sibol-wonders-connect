@@ -62,7 +62,7 @@ function Home() {
     <div>
       {/* Hero */}
       <section className="bg-gradient-hero">
-        <div className="mx-auto max-w-6xl px-5 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+        <div className="mx-auto max-w-7xl px-5 py-16 md:py-24 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
           <div className="fade-up">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card/70 border border-border text-xs font-semibold text-primary">
               <Sparkles className="w-3.5 h-3.5" /> Welcome to our community
