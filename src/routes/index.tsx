@@ -68,7 +68,7 @@ function Home() {
           <div className="fade-up">
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-warm rounded-[2.5rem] opacity-60 blur-2xl" aria-hidden />
-              <HeroMedia media={homePage?.heroMedia} fallbackImg={heroImg} />
+              <HeroMedia />
             </div>
           </div>
         </div>
