@@ -66,7 +66,7 @@ function Home() {
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-24 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
           <div className="fade-up">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card/70 border border-border text-xs font-semibold text-primary">
-              <img src={logo} alt="" className="w-4 h-4 object-contain" /> Welcome to our community
+              <img src={logo} alt="" className="w-6 h-6 object-contain rounded-full border border-black/5" /> Welcome to our community
             </span>
             <h1 className="mt-5 text-4xl md:text-6xl font-display font-bold leading-tight">
               Sibol <span className="text-primary">Wonders</span>

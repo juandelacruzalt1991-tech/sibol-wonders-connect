@@ -18,7 +18,7 @@ export function Header() {
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-6xl px-5 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center font-display font-bold text-lg">
-          <img src={logo} alt="Sibol Wonders" className="h-12 w-auto object-contain" />
+          <img src={logo} alt="Sibol Wonders" className="h-16 w-auto object-contain rounded-full border border-black/5" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
