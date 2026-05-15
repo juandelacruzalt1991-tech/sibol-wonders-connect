@@ -69,10 +69,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Sibol Wonders — Autism Awareness, Support & Community" },
       { name: "twitter:description", content: "A safe space for autism awareness, support, and community connection. Read family stories, find resources, and join our events." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/764362c8-1add-48aa-b613-e599bd50f70c" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/764362c8-1add-48aa-b613-e599bd50f70c" },
+      { property: "og:image", content: "/favicon.ico" },
+      { name: "twitter:image", content: "/favicon.ico" },
     ],
     links: [
+      { rel: "icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

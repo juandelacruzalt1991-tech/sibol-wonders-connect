@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logo from "../assets/logo.jpg";
 
 const links = [
   { to: "/", label: "Home" },
@@ -16,11 +17,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-6xl px-5 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg">
-          <span className="grid place-items-center w-9 h-9 rounded-full bg-gradient-warm shadow-soft">
-            <Sparkles className="w-4 h-4 text-foreground" />
-          </span>
-          <span>Sibol Wonders</span>
+        <Link to="/" className="flex items-center gap-3 font-display font-bold text-lg">
+          <img src={logo} alt="Sibol Wonders" className="h-10 w-auto object-contain" />
+          <span className="hidden sm:inline">Sibol Wonders</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">

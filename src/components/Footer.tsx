@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Heart, Facebook, Instagram, Youtube, Mail } from "lucide-react";
 import { STUDIO_URL } from "@/lib/sanity";
 
+import logo from "../assets/logo.jpg";
+
 const TiktokIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
@@ -12,7 +14,10 @@ export function Footer() {
     <footer className="mt-24 border-t border-border/60 bg-secondary/40">
       <div className="mx-auto max-w-6xl px-5 py-12 grid gap-10 md:grid-cols-3">
         <div>
-          <h3 className="font-display font-bold text-xl">Sibol Wonders</h3>
+          <div className="flex items-center gap-2 mb-4">
+            <img src={logo} alt="Sibol Wonders" className="h-8 w-auto object-contain" />
+            <h3 className="font-display font-bold text-xl">Sibol Wonders</h3>
+          </div>
           <p className="mt-3 text-sm text-muted-foreground max-w-xs">
             A safe space for autism awareness, support, and community connection.
           </p>
