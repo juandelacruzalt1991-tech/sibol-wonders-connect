@@ -17,21 +17,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { data: homePage } = useQuery<HomePageDoc>({
-    queryKey: ["homePage"],
-    queryFn: () =>
-      sanityClient.fetch(
-        `*[_type == "homePage"][0]{
-          _id,
-          heroMedia {
-            mediaType,
-            singleImage,
-            slideshow,
-            "videoUrl": videoUrl.asset->url
-          }
-        }`
-      ),
-  });
 
   const { data: stories } = useQuery<Story[]>({
     queryKey: ["stories", "preview"],
