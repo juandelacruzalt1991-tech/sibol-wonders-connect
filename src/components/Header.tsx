@@ -17,9 +17,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-6xl px-5 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 font-display font-bold text-lg">
-          <img src={logo} alt="Sibol Wonders" className="h-10 w-auto object-contain" />
-          <span className="hidden sm:inline">Sibol Wonders</span>
+        <Link to="/" className="flex items-center font-display font-bold text-lg">
+          <img src={logo} alt="Sibol Wonders" className="h-12 w-auto object-contain" />
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
