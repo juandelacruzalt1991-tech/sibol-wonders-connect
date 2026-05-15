@@ -5,7 +5,7 @@ import { HomePageDoc, urlFor } from "@/lib/sanity";
 export function HeroMedia({ media, fallbackImg }: { media?: HomePageDoc["heroMedia"]; fallbackImg: string }) {
   const [emblaRef] = useEmblaCarousel({ loop: true });
 
-  const containerClass = "relative rounded-[2rem] shadow-glow w-full aspect-[2/1] overflow-hidden bg-muted";
+  const containerClass = "relative rounded-[2rem] shadow-glow w-full aspect-[5/3] overflow-hidden bg-muted";
   const mediaClass = "w-full h-full object-cover";
 
   if (!media) {
