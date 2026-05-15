@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, BookOpen, Calendar, HeartHandshake, MapPin, Sparkles } from "lucide-react";
-import heroImg from "@/assets/hero-families.jpg";
-import { sanityClient, type Story, type EventDoc, type ResourceDoc, type HomePageDoc } from "@/lib/sanity";
+import { sanityClient, type Story, type EventDoc, type ResourceDoc } from "@/lib/sanity";
 import { StoryCard } from "@/components/StoryCard";
 import { HeroMedia } from "@/components/HeroMedia";
 import { eventFallback, resourceFallback } from "@/lib/fallbacks";
