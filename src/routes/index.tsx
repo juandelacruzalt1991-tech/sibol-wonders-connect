@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, BookOpen, Calendar, HeartHandshake, MapPin, Sparkles } from "lucide-react";
 import heroImg from "@/assets/hero-families.jpg";
-import { sanityClient, type Story, type EventDoc, type ResourceDoc, type HomePageDoc } from "@/lib/sanity";
+import { sanityClient, urlFor, type Story, type EventDoc, type ResourceDoc, type HomePageDoc } from "@/lib/sanity";
 import { StoryCard } from "@/components/StoryCard";
 import { HeroMedia } from "@/components/HeroMedia";
 import { eventFallback, resourceFallback } from "@/lib/fallbacks";
@@ -46,7 +46,7 @@ function Home() {
     queryKey: ["events", "preview"],
     queryFn: () =>
       sanityClient.fetch(
-        `*[_type == "event"] | order(date asc)[0...3]{ _id, name, date, location, description }`
+        `*[_type == "event"] | order(date asc)[0...3]{ _id, name, date, location, description, image }`
       ),
   });
 
@@ -160,7 +160,14 @@ function Home() {
           {events?.map((e) => (
             <div key={e._id} className="card-soft overflow-hidden">
               <div className="aspect-[4/3] overflow-hidden bg-gradient-warm">
-                <img src={eventFallback(e._id)} alt={e.name} loading="lazy" width={800} height={600} className="w-full h-full object-cover" />
+                <img 
+                  src={e.image ? urlFor(e.image).width(800).height(600).fit("crop").url() : eventFallback(e._id)} 
+                  alt={e.name} 
+                  loading="lazy" 
+                  width={800} 
+                  height={600} 
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+                />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-2 text-primary text-sm font-semibold">

@@ -20,7 +20,7 @@ function EventsPage() {
     queryKey: ["events"],
     queryFn: () =>
       sanityClient.fetch(
-        `*[_type == "event"] | order(date asc){ _id, name, date, location, description, registrationLink }`
+        `*[_type == "event"] | order(date asc){ _id, name, date, location, description, registrationLink, image }`
       ),
   });
 
