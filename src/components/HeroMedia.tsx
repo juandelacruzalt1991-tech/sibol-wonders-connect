@@ -5,41 +5,48 @@ import { HomePageDoc, urlFor } from "@/lib/sanity";
 export function HeroMedia({ media, fallbackImg }: { media?: HomePageDoc["heroMedia"]; fallbackImg: string }) {
   const [emblaRef] = useEmblaCarousel({ loop: true });
 
+  const containerClass = "relative rounded-[2rem] shadow-glow w-full aspect-[3/2] overflow-hidden bg-muted";
+  const mediaClass = "w-full h-full object-cover";
+
   if (!media) {
     return (
-      <img
-        src={fallbackImg}
-        alt="A diverse group of families and children holding hands in a sunlit meadow"
-        width={1536}
-        height={1024}
-        className="relative rounded-[2rem] shadow-glow w-full h-auto object-cover"
-      />
+      <div className={containerClass}>
+        <img
+          src={fallbackImg}
+          alt="A diverse group of families and children holding hands in a sunlit meadow"
+          width={1536}
+          height={1024}
+          className={mediaClass}
+        />
+      </div>
     );
   }
 
   if (media.mediaType === "video" && media.videoUrl) {
     return (
-      <video
-        src={media.videoUrl}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="relative rounded-[2rem] shadow-glow w-full h-auto object-cover"
-      />
+      <div className={containerClass}>
+        <video
+          src={media.videoUrl}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className={mediaClass}
+        />
+      </div>
     );
   }
 
   if (media.mediaType === "slideshow" && media.slideshow && media.slideshow.length > 0) {
     return (
-      <div className="overflow-hidden relative rounded-[2rem] shadow-glow w-full" ref={emblaRef}>
-        <div className="flex">
+      <div className={containerClass} ref={emblaRef}>
+        <div className="flex h-full">
           {media.slideshow.map((img, i) => (
-            <div className="flex-[0_0_100%] min-w-0 relative" key={i}>
+            <div className="flex-[0_0_100%] min-w-0 relative h-full" key={i}>
               <img
                 src={urlFor(img).width(1536).height(1024).url()}
                 alt={`Slideshow image ${i + 1}`}
-                className="w-full h-auto object-cover rounded-[2rem]"
+                className={mediaClass}
               />
             </div>
           ))}
@@ -54,12 +61,14 @@ export function HeroMedia({ media, fallbackImg }: { media?: HomePageDoc["heroMed
     : fallbackImg;
 
   return (
-    <img
-      src={imgSrc}
-      alt="Hero image"
-      width={1536}
-      height={1024}
-      className="relative rounded-[2rem] shadow-glow w-full h-auto object-cover"
-    />
+    <div className={containerClass}>
+      <img
+        src={imgSrc}
+        alt="Hero image"
+        width={1536}
+        height={1024}
+        className={mediaClass}
+      />
+    </div>
   );
 }
