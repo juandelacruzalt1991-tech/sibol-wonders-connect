@@ -14,8 +14,9 @@ export function Footer() {
     <footer className="mt-24 border-t border-border/60 bg-secondary/40">
       <div className="mx-auto max-w-6xl px-5 py-12 grid gap-10 md:grid-cols-3">
         <div>
-          <div className="flex items-center mb-4">
+          <div className="flex items-center gap-2 mb-4">
             <img src={logo} alt="Sibol Wonders" className="h-16 w-auto object-contain rounded-full border border-black/5" />
+            <h3 className="font-display font-bold text-xl">Sibol Wonders</h3>
           </div>
           <p className="mt-3 text-sm text-muted-foreground max-w-xs">
             A safe space for autism awareness, support, and community connection.
