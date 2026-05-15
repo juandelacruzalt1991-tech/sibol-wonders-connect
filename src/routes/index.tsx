@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, BookOpen, Calendar, HeartHandshake, MapPin, Sparkles } from "lucide-react";
 import heroImg from "@/assets/hero-families.jpg";
+import logo from "@/assets/logo.jpg";
 import { sanityClient, urlFor, type Story, type EventDoc, type ResourceDoc, type HomePageDoc } from "@/lib/sanity";
 import { StoryCard } from "@/components/StoryCard";
 import { HeroMedia } from "@/components/HeroMedia";
@@ -65,7 +66,7 @@ function Home() {
         <div className="mx-auto max-w-7xl px-5 py-16 md:py-24 grid md:grid-cols-[1fr_1.3fr] gap-10 items-center">
           <div className="fade-up">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card/70 border border-border text-xs font-semibold text-primary">
-              <Sparkles className="w-3.5 h-3.5" /> Welcome to our community
+              <img src={logo} alt="" className="w-4 h-4 object-contain" /> Welcome to our community
             </span>
             <h1 className="mt-5 text-4xl md:text-6xl font-display font-bold leading-tight">
               Sibol <span className="text-primary">Wonders</span>
