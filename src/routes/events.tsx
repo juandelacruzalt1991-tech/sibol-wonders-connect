@@ -4,6 +4,15 @@ import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { sanityClient, type EventDoc } from "@/lib/sanity";
 
 export const Route = createFileRoute("/events")({
+  loader: async ({ context: { queryClient } }) => {
+    await queryClient.ensureQueryData({
+      queryKey: ["events"],
+      queryFn: () =>
+        sanityClient.fetch(
+          `*[_type == "event"] | order(date asc){ _id, name, date, location, description, registrationLink, image }`
+        ),
+    });
+  },
   head: () => ({
     meta: [
       { title: "Events — Sibol Wonders" },

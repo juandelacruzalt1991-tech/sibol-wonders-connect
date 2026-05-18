@@ -5,6 +5,16 @@ import { ArrowLeft } from "lucide-react";
 import { sanityClient, urlFor, type Story } from "@/lib/sanity";
 
 export const Route = createFileRoute("/stories/$slug")({
+  loader: async ({ context: { queryClient }, params: { slug } }) => {
+    await queryClient.ensureQueryData({
+      queryKey: ["story", slug],
+      queryFn: () =>
+        sanityClient.fetch(
+          `*[_type == "story" && slug.current == $slug][0]{ _id, title, slug, preview, image, author, publishedAt, body }`,
+          { slug }
+        ),
+    });
+  },
   head: () => ({
     meta: [
       { title: "Story — Sibol Wonders" },
@@ -28,7 +38,8 @@ function StoryPage() {
   if (isLoading) {
     return <div className="mx-auto max-w-3xl px-5 py-20 animate-pulse h-96" />;
   }
-  if (!story) throw notFound();
+  if (!story && !isLoading) throw notFound();
+
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-12 md:py-20">

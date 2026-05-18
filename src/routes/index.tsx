@@ -9,6 +9,46 @@ import { HeroMedia } from "@/components/HeroMedia";
 import { eventFallback, resourceFallback } from "@/lib/fallbacks";
 
 export const Route = createFileRoute("/")({
+  loader: async ({ context: { queryClient } }) => {
+    await Promise.all([
+      queryClient.ensureQueryData({
+        queryKey: ["homePage"],
+        queryFn: () =>
+          sanityClient.fetch(
+            `*[_type == "homePage"][0]{
+              _id,
+              heroMedia {
+                mediaType,
+                singleImage,
+                slideshow,
+                "videoUrl": videoUrl.asset->url
+              }
+            }`
+          ),
+      }),
+      queryClient.ensureQueryData({
+        queryKey: ["stories", "preview"],
+        queryFn: () =>
+          sanityClient.fetch(
+            `*[_type == "story"] | order(publishedAt desc)[0...3]{ _id, title, slug, preview, image, author }`
+          ),
+      }),
+      queryClient.ensureQueryData({
+        queryKey: ["events", "preview"],
+        queryFn: () =>
+          sanityClient.fetch(
+            `*[_type == "event"] | order(date asc)[0...3]{ _id, name, date, location, description, image }`
+          ),
+      }),
+      queryClient.ensureQueryData({
+        queryKey: ["resources", "preview"],
+        queryFn: () =>
+          sanityClient.fetch(
+            `*[_type == "resource"] | order(_createdAt desc)[0...3]{ _id, name, category, description, location }`
+          ),
+      }),
+    ]);
+  },
   head: () => ({
     meta: [
       { title: "Sibol Wonders — A Safe Space for Autism Families" },
