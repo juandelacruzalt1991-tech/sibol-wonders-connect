@@ -11,6 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { StickyAd } from "@/components/StickyAd";
 
 function NotFoundComponent() {
   return (
@@ -22,7 +23,9 @@ function NotFoundComponent() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
-          <Link to="/" className="btn-primary">Go home</Link>
+          <Link to="/" className="btn-primary">
+            Go home
+          </Link>
         </div>
       </div>
     </div>
@@ -43,12 +46,17 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="btn-primary"
           >
             Try again
           </button>
-          <a href="/" className="btn-ghost">Go home</a>
+          <a href="/" className="btn-ghost">
+            Go home
+          </a>
         </div>
       </div>
     </div>
@@ -61,14 +69,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Sibol Wonders — Autism Awareness, Support & Community" },
-      { name: "description", content: "A safe space for autism awareness, support, and community connection. Read family stories, find resources, and join our events." },
+      {
+        name: "description",
+        content:
+          "A safe space for autism awareness, support, and community connection. Read family stories, find resources, and join our events.",
+      },
       { name: "author", content: "Sibol Wonders" },
       { property: "og:title", content: "Sibol Wonders — Autism Awareness, Support & Community" },
-      { property: "og:description", content: "A safe space for autism awareness, support, and community connection. Read family stories, find resources, and join our events." },
+      {
+        property: "og:description",
+        content:
+          "A safe space for autism awareness, support, and community connection. Read family stories, find resources, and join our events.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Sibol Wonders — Autism Awareness, Support & Community" },
-      { name: "twitter:description", content: "A safe space for autism awareness, support, and community connection. Read family stories, find resources, and join our events." },
+      {
+        name: "twitter:description",
+        content:
+          "A safe space for autism awareness, support, and community connection. Read family stories, find resources, and join our events.",
+      },
       { property: "og:image", content: "/favicon.ico" },
       { name: "twitter:image", content: "/favicon.ico" },
     ],
@@ -107,8 +127,9 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col relative">
         <Header />
+        <StickyAd />
         <main className="flex-1">
           <Outlet />
         </main>

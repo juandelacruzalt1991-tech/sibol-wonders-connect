@@ -15,10 +15,17 @@ const links = [
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border/60">
       <div className="mx-auto max-w-6xl px-5 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 sm:gap-3 font-display font-bold text-base sm:text-lg">
-          <img src={logo} alt="Sibol Wonders" className="h-10 sm:h-16 w-auto object-contain rounded-full border border-black/5" />
+        <Link
+          to="/"
+          className="flex items-center gap-2 sm:gap-3 font-display font-bold text-base sm:text-lg"
+        >
+          <img
+            src={logo}
+            alt="Sibol Wonders"
+            className="h-10 sm:h-16 w-auto object-contain rounded-full border border-black/5"
+          />
           <span>Sibol Wonders</span>
         </Link>
 
@@ -29,7 +36,10 @@ export function Header() {
               to={l.to}
               activeOptions={{ exact: l.to === "/" }}
               className="px-3 py-2 rounded-full text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary"
-              activeProps={{ className: "px-3 py-2 rounded-full text-sm font-medium text-foreground bg-secondary" }}
+              activeProps={{
+                className:
+                  "px-3 py-2 rounded-full text-sm font-medium text-foreground bg-secondary",
+              }}
             >
               {l.label}
             </Link>
@@ -57,7 +67,10 @@ export function Header() {
               onClick={() => setOpen(false)}
               activeOptions={{ exact: l.to === "/" }}
               className="px-4 py-3 rounded-2xl text-base font-medium text-muted-foreground hover:bg-secondary"
-              activeProps={{ className: "px-4 py-3 rounded-2xl text-base font-medium text-foreground bg-secondary" }}
+              activeProps={{
+                className:
+                  "px-4 py-3 rounded-2xl text-base font-medium text-foreground bg-secondary",
+              }}
             >
               {l.label}
             </Link>

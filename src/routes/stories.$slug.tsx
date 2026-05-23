@@ -11,7 +11,7 @@ export const Route = createFileRoute("/stories/$slug")({
       queryFn: () =>
         sanityClient.fetch(
           `*[_type == "story" && slug.current == $slug][0]{ _id, title, slug, preview, image, author, publishedAt, body }`,
-          { slug }
+          { slug },
         ),
     });
   },
@@ -31,19 +31,21 @@ function StoryPage() {
     queryFn: () =>
       sanityClient.fetch(
         `*[_type == "story" && slug.current == $slug][0]{ _id, title, slug, preview, image, author, publishedAt, body }`,
-        { slug }
+        { slug },
       ),
   });
 
   if (isLoading) {
     return <div className="mx-auto max-w-3xl px-5 py-20 animate-pulse h-96" />;
   }
-  if (!story && !isLoading) throw notFound();
-
+  if (!story) throw notFound();
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-12 md:py-20">
-      <Link to="/stories" className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2 transition-all">
+      <Link
+        to="/stories"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2 transition-all"
+      >
         <ArrowLeft className="w-4 h-4" /> Back to stories
       </Link>
 
@@ -51,7 +53,8 @@ function StoryPage() {
       {story.author && (
         <p className="mt-3 text-sm uppercase tracking-wide text-primary font-semibold">
           By {story.author}
-          {story.publishedAt && ` · ${new Date(story.publishedAt).toLocaleDateString(undefined, { dateStyle: "long" })}`}
+          {story.publishedAt &&
+            ` · ${new Date(story.publishedAt).toLocaleDateString(undefined, { dateStyle: "long" })}`}
         </p>
       )}
 
